@@ -1,0 +1,5 @@
+/* Floating button pulse animation */
+@keyframes ai-pulse {
+  0%,100% { box-shadow: 0 4px 15px rgba(102,126,234,0.5); }
+  50% { box-shadow: 0 4px 25px rgba(102,126,234,0.8); }
+}

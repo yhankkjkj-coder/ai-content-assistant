@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Assistant</title>
+<link rel="stylesheet" href="assistant.css">
+</head>
+<body>
+
+<div id="app">
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <svg width="26" height="26" viewBox="0 0 24 24"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1>AI Content Assistant</h1>
+    </div>
+    <div class="hdr-right">
+      <span id="usageBadge" class="badge">0/5</span>
+      <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+    </div>
+  </header>
+
+  <!-- Settings Panel -->
+  <div id="settingsPanel" class="panel hidden">
+    <div class="card">
+      <label>DeepSeek API Key</label>
+      <div class="row">
+        <input type="text" id="apiKey" placeholder="sk-...">
+        <button id="saveKeyBtn" class="btn primary">Save</button>
+      </div>
+      <p class="muted"><a href="https://platform.deepseek.com/api_keys" target="_blank">Get free key →</a> · ¥1 per 1M tokens</p>
+    </div>
+
+    <div id="upgradeSection" class="card">
+      <h3>💎 Go Pro — Unlimited AI</h3>
+      <p class="muted" style="margin-bottom:12px">Get an activation code from the developer (WeChat/Alipay/论坛)</p>
+      <div class="row">
+        <input type="text" id="activationCode" placeholder="PRO-XXXX-XXXX-XXXX">
+        <button id="activateBtn" class="btn primary">Activate Pro</button>
+      </div>
+      <p id="activateMsg" class="muted" style="margin-top:8px"></p>
+    </div>
+
+    <div id="proStatus" class="card hidden" style="text-align:center">
+      <div class="pro-badge">✨ PRO ACTIVE</div>
+      <p id="proTierLabel" class="muted"></p>
+    </div>
+  </div>
+
+  <!-- Text Input -->
+  <div class="input-area">
+    <textarea id="inputText" placeholder="Select text on any webpage and click the floating ✨ button...&#10;Or paste text here directly."></textarea>
+    <div class="input-meta">
+      <span id="charCount">0 chars</span>
+      <button id="clearBtn" class="btn sm">Clear</button>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="actions">
+    <button class="ai-btn" data-action="summarize"><span>📝</span> Summarize</button>
+    <button class="ai-btn" data-action="translate"><span>🌐</span> Translate</button>
+    <button class="ai-btn" data-action="explain"><span>💡</span> Explain</button>
+    <button class="ai-btn" data-action="rewrite"><span>✍️</span> Rewrite</button>
+  </div>
+
+  <!-- Loading -->
+  <div id="loadingArea" class="hidden"><div class="spinner"></div><p>AI thinking...</p></div>
+
+  <!-- Result -->
+  <div id="resultArea" class="hidden">
+    <div class="result-bar">
+      <span id="resultLabel"></span>
+      <div>
+        <button id="copyBtn" class="btn sm">📋 Copy</button>
+        <button id="retryBtn" class="btn sm">🔄 Retry</button>
+      </div>
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+  <!-- Error -->
+  <div id="errorArea" class="hidden">
+    <div class="error-box"><span>⚠️</span><span id="errorMsg"></span><button id="dismissErr" class="btn sm">✕</button></div>
+  </div>
+</div>
+
+<script src="stripe-config.js"></script>
+<script src="assistant.js"></script>
+</body>
+</html>
